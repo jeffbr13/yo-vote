@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG) if bool(environ.get('DEBUG', False)) el
 app = Flask(__name__)
 app.config.update(
     DEBUG=bool(environ.get('DEBUG', False)),
-)
+    )
 
 
 Vote = namedtuple('Vote', ['for_choice', 'by'])
@@ -37,8 +37,9 @@ FINISHED_VOTING = set()
 def index():
     """Serve a self-refreshing page of the ranks.
     """
-    teamvotes = [TeamVotes(team_str=team, votes=TEAM_VOTES_DICT[team]) for team in TEAM_VOTES_DICT]
-    sorted_teamvotes = sorted(teamvotes, key=lambda t: len(t.votes[1]))
+    sorted_teamvotes = sorted([TeamVotes(team_str=team, votes=TEAM_VOTES_DICT[team]) for team in TEAM_VOTES_DICT],
+                              key=lambda t: len(t.votes[1]),
+                              reverse=True)
 
     # in the case of a winner/runner-up draw, use supplementary votes
     if len(sorted_teamvotes[0].votes[1]) == len(sorted_teamvotes[1].votes[2]):
