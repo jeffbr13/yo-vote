@@ -70,7 +70,10 @@ def yote():
             vote = Vote(for_choice=team_str, by=username)
 
             if username in FINISHED_VOTING:
-                logging.info('rejected URL Yote - ' + str(vote))
+                logging.info('rejected >2nd URL Yote - ' + str(vote))
+                pass
+            elif vote in TEAM_VOTES_DICT[team_str][1]:
+                logging.info('rejected double URL Yote - ' + str(vote))
                 pass
             elif username in HAS_VOTED:
                 logging.info('recorded URL Yote 2 - ' + str(vote))
@@ -100,7 +103,10 @@ def yote_channel(team_account):
             vote = Vote(for_choice=team_str, by=username)
 
             if username in FINISHED_VOTING:
-                logging.info('rejected team account Yote - ' + str(vote))
+                logging.info('rejected >2nd team account Yote - ' + str(vote))
+                pass
+            elif vote in TEAM_VOTES_DICT[team_str][1]:
+                logging.info('rejected double team account Yote - ' + str(vote))
                 pass
             elif username in HAS_VOTED:
                 logging.info('recorded team account Yote 2 - ' + str(vote))
