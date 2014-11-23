@@ -45,7 +45,10 @@ def index():
         rank_a = len(ranked_teams[0].votes[1]) + len(ranked_teams[0].votes[2])
         rank_b = len(ranked_teams[1].votes[1]) + len(ranked_teams[1].votes[2])
 
-    return render_template('index.html', winner=ranked_teams[0].team_str, runnerup=ranked_teams[1].team_str, sorted_teamvotes=ranked_teams)
+    winner = ranked_teams[0].team_str if len(ranked_teams[0].votes[1]) > 0 else None
+    runnerup = ranked_teams[1].team_str if len(ranked_teams[0].votes[1]) > 0 else None
+
+    return render_template('index.html', winner=winner, runnerup=runnerup, sorted_teamvotes=ranked_teams)
 
 
 @app.route('/yote')
