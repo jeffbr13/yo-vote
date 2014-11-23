@@ -45,8 +45,9 @@ def index():
         rank_a = len(ranked_teams[0].votes[1]) + len(ranked_teams[0].votes[2])
         rank_b = len(ranked_teams[1].votes[1]) + len(ranked_teams[1].votes[2])
 
-    winner = ranked_teams[0].team_str if len(ranked_teams[0].votes[1]) > 0 else None
-    runnerup = ranked_teams[1].team_str if len(ranked_teams[0].votes[1]) > 0 else None
+    winner = ranked_teams[0].team_str if len(ranked_teams[0].votes[1]) > 0 else ranked_teams[0]
+    runnerup = ranked_teams[1].team_str if len(ranked_teams[0].votes[1]) > 0 else ranked_teams[1]
+
 
     return render_template('index.html', winner=winner, runnerup=runnerup, sorted_teamvotes=ranked_teams)
 
