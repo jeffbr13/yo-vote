@@ -7,7 +7,7 @@ from collections import namedtuple
 from datetime import datetime, timedelta
 from os import environ
 
-from flask import Flask, render_template, abort, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect
 
 
 
@@ -132,6 +132,8 @@ def reset():
     TEAM_VOTES_DICT = {}
     for team_str in TEAM_VOTES_DICT:
         TEAM_VOTES_DICT[team_str] = {1: [], 2: []}
+
+    return redirect('/')
 
 
 @app.route('/favicon.ico')
