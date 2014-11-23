@@ -6,11 +6,25 @@
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" href="https://benjeffrey.com/stylesheet.css" type="text/css" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 	<style>
+		h1, h2, h3, h4, h5, h6, ul {
+			font-family: 'Montserrat', sans-serif !important;
+		}
 		ul {
 			list-style-position: inside;
 			list-style-type: square;
+			font-weight: 700;
+			font-size: 3em;
+		}
+
+		ul > li {
+			margin: 0.4em;
+		}
+
+		ul > li > a {
+			color: white;
 		}
 
 		table {
@@ -29,20 +43,21 @@
 
 	<h3>Just Yo at the following accounts:</h3>
 	<p>(buttons on their webpages)</p>
-	<ul>
-		<li><a href="http://unichance.xyz/">PFUNICHANCE</a></li>
-		<li><a href="http://textitdone.xyz/">PFTEXTITDONE</></li>
-		<li><a href="http://signup.getgoya.xyz/">PFGOYA</a></li>
-		<li><a href="http://skillmatrix.com/">PFSKILLMATRIX</a></li>
-		<li>PFWEATHERSELFIE</li>
+	<ul class="inline-list">
+		<li class="label"><a href="http://unichance.xyz/">PFUNICHANCE</a></li>
+		<li class="label"><a href="http://textitdone.xyz/">PFTEXTITDONE</></li>
+		<li class="label"><a href="http://signup.getgoya.xyz/">PFGOYA</a></li>
+		<li class="label"><a href="http://skillmatrix.com/">PFSKILLMATRIX</a></li>
+		<li class="label">PFWEATHERSELFIE</li>
 	</ul>
-	<p>Alternatively, Yo their webpage URL to </p>
+	<p>Alternatively, Yo their webpage URL to <a href="http://productforge.io">PRODUCTFORGE</a>!</p>
+
 </div>
 
 <hr/>
 
 <div class="row">
-	<div class="columns small-12 medium-6 panel">
+	<div class="columns small-6 medium-6 panel">
 		<p>This page refreshes automatically to display the <strong>current</strong> winner and runner-up.</p>
 		<h2>
 			<small>winning:</small> {{ winner }}!
@@ -52,7 +67,7 @@
 		</h3>
 	</div>
 
-	<div class="columns small-12 medium-6">
+	<div class="columns small-6 medium-6">
 		<h2>all votes:</h2>
 		<table>
 			<thead>
