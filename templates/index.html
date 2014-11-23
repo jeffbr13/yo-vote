@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yote - vote with Yo</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://benjeffrey.com/stylesheet.css" type="text/css" media="screen">
+
+	<style>
+		ul {
+			list-style-position: inside;
+			list-style-type: square;
+		}
+
+		table {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+<div class="row">
+	<h1>
+		Yote <small>vote with Yo</small>
+	</h1>
+
+	<p>To vote, just <a href="http://www.justyo.co">Yo</a> at your first choice team <em>then</em> your second choice team. Only your first 2 votes will count :)</p>
+
+	<h3>Just Yo at the following accounts:</h3>
+	<p>(buttons on their webpages)</p>
+	<ul>
+		<li><a href="http://unichance.xyz/">PFUNICHANCE</a></li>
+		<li><a href="http://textitdone.xyz/">PFTEXTITDONE</></li>
+		<li><a href="http://signup.getgoya.xyz/">PFGOYA</a></li>
+		<li><a href="http://skillmatrix.com/">PFSKILLMATRIX</a></li>
+		<li>PFWEATHERSELFIE</li>
+	</ul>
+	<p>Alternatively, Yo their webpage URL to </p>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="columns small-12 medium-6 panel">
+		<p>This page refreshes automatically to display the <strong>current</strong> winner and runner-up.</p>
+		<h2>
+			<small>winning:</small> {{ winner }}!
+		</h2>
+		<h3>
+			<small>almost there:</small> {{ runnerup }}
+		</h3>
+	</div>
+
+	<div class="columns small-12 medium-6">
+		<h2>all votes:</h2>
+		<table>
+			<thead>
+			<tr>
+				<th>Team</th>
+				<th>primary votes</th>
+				<th>contingent votes</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for teamvote in sorted_teamvotes %}
+				<tr>
+					<td>{{ teamvote.team_str }}</td>
+					<td>{{ teamvote.votes[1] | count }}</td>
+					<td>{{ teamvote.votes[2] | count }}</td>
+				</tr>
+			{% endfor %}
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<footer class="row">
+
+	<p>Votes tallied using <a href="http://en.wikipedia.org/wiki/Contingent_vote#Supplementary_vote">Supplementary Voting</a></p>
+	<p>⚒</p>
+	<p>Built for <a href="http://productforge.io">Product Forge</a> by <a href="https://benjeffrey.net">Ben Jeffrey</a></p>
+
+	<script type="text/javascript">
+		var _gauges = _gauges || [];
+		(function() {
+			var t   = document.createElement('script');
+			t.type  = 'text/javascript';
+			t.async = true;
+			t.id    = 'gauges-tracker';
+			t.setAttribute('data-site-id', '5471dac7eddd5b07070103cd');
+			t.src = '//secure.gaug.es/track.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(t, s);
+		})();
+	</script>
+
+	<script>
+		setTimeout("location.reload(true);", 3000);
+	</script>
+</footer>
+</body>
+</html>
