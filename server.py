@@ -44,6 +44,8 @@ def index():
     if len(ranked_teamvotes[0].votes[1]) == len(ranked_teamvotes[1].votes[2]):
         rank_a = len(ranked_teamvotes[0].votes[1]) + len(ranked_teamvotes[0].votes[2])
         rank_b = len(ranked_teamvotes[1].votes[1]) + len(ranked_teamvotes[1].votes[2])
+        if rank_a < rank_b:
+            ranked_teamvotes[0], ranked_teamvotes[1] = ranked_teamvotes[1], ranked_teamvotes[0]
 
     winner = ranked_teamvotes[0].team_str if len(ranked_teamvotes[0].votes[1]) > 0 else None
     runnerup = ranked_teamvotes[1].team_str if len(ranked_teamvotes[0].votes[1]) > 0 else None
