@@ -38,18 +38,18 @@ def index():
     """Serve a self-refreshing page of the ranks.
     """
     teamvotes = [TeamVotes(team_str=team, votes=TEAM_VOTES_DICT[team]) for team in TEAM_VOTES_DICT]
-    ranked_teams = sorted(teamvotes, key=lambda teamvote: len(teamvote.votes[1]))
+    ranked_teamvotes = sorted(teamvotes, key=lambda t: len(t.votes[1]))
 
     # in the case of a winner/runner-up draw, use supplementary votes
-    if len(ranked_teams[0].votes[1]) == len(ranked_teams[1].votes[2]):
-        rank_a = len(ranked_teams[0].votes[1]) + len(ranked_teams[0].votes[2])
-        rank_b = len(ranked_teams[1].votes[1]) + len(ranked_teams[1].votes[2])
+    if len(ranked_teamvotes[0].votes[1]) == len(ranked_teamvotes[1].votes[2]):
+        rank_a = len(ranked_teamvotes[0].votes[1]) + len(ranked_teamvotes[0].votes[2])
+        rank_b = len(ranked_teamvotes[1].votes[1]) + len(ranked_teamvotes[1].votes[2])
 
-    winner = ranked_teams[0].team_str if len(ranked_teams[0].votes[1]) > 0 else None
-    runnerup = ranked_teams[1].team_str if len(ranked_teams[0].votes[1]) > 0 else None
+    winner = ranked_teamvotes[0].team_str if len(ranked_teamvotes[0].votes[1]) > 0 else None
+    runnerup = ranked_teamvotes[1].team_str if len(ranked_teamvotes[0].votes[1]) > 0 else None
 
 
-    return render_template('index.html', winner=winner, runnerup=runnerup, sorted_teamvotes=ranked_teams)
+    return render_template('index.html', winner=winner, runnerup=runnerup, sorted_teamvotes=ranked_teamvotes)
 
 
 @app.route('/yote')
