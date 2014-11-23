@@ -111,10 +111,10 @@ def yote_channel(team_account):
 def reset():
     """Resets all votes to 0.
     """
-    VOTES = {}
-    for team_str in TEAMS:
-        VOTES[team_str] = {1: [],
-                           2: []}
+    logging.warn('reset TEAM_VOTES_DICT count')
+    TEAM_VOTES_DICT = {}
+    for team_str in TEAM_VOTES_DICT:
+        TEAM_VOTES_DICT[team_str] = {1: [], 2: []}
 
 
 @app.route('/favicon.ico')
